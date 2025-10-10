@@ -24,8 +24,8 @@ class Appointments (models.Model):
     time = models.TimeField(null=False) # this field CANNOT be null
 
     # the relation is one to many (one doctor can have many appointments & one user can have many appointments)
-    doctor = models.ForeignKey(Doctor , related_name='appointments', on_delete=models.CASCADE,null=True) # this field can be null
-    user = models.ForeignKey(User, related_name='appointments',on_delete=models.CASCADE,null=True) # this field can be null
+    doctor = models.ForeignKey(Doctor , related_name='appointments', on_delete=models.CASCADE) # this field can be null
+    user = models.ForeignKey(User, related_name='appointments',on_delete=models.CASCADE)
 
     def __self__(self):
         return self.patient_name
