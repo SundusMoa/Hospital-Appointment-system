@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Discover Our Specialist Doctor </h3>
+<ul>
+{% for doctor in doctors %}
+<li>{{ doctor.doctor_name }}</strong> : {{doctor.doctor_specialization }}</li><strong>
+{% endfor %}
+</ul>
+{% endblock  %}

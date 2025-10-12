@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from .models import Appointments , Doctor
-from .forms import AppointmentForm
+from .forms import AppointmentForm , DoctorForm
 from django.urls import reverse
 # Create your views here.
 
@@ -42,6 +42,15 @@ def appointment_delete(request,pk):
     if request.method == 'POST':
         u_appointment.delete()
         return redirect (reverse('appointment_list'))
+
+def doctor_list (request):
+    all_doctor = Doctor.objects.all()
+    return render (request , 'doctor/doctor_list.html', {'doctors':all_doctor})
+
+
+
+
+    
 
 
 
