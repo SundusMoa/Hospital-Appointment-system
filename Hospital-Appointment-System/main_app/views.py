@@ -47,6 +47,19 @@ def doctor_list (request):
     all_doctor = Doctor.objects.all()
     return render (request , 'doctor/doctor_list.html', {'doctors':all_doctor})
 
+def doctor_create(request):
+    
+    if request.method == 'GET':
+        form = DoctorForm()
+        return render (request,'doctor/doctor-form.html',{'form': form})
+
+    elif request.method == 'POST':
+        form=DoctorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect (reverse('doctor_list')) # reverse take name in path
+        else :
+            return render (request,'doctor/doctor-form.html',{'form': form})
 
 
 
