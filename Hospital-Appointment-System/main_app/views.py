@@ -26,6 +26,15 @@ def appointment_create(request):
         else :
             return render (request,'appointment/appointment-form.html',{'form': form})
 
-
+def appointment_update(request,pk):
+    u_appointment = Appointments.objects.get(pk = pk) 
+    if request.method == 'GET':
+        form = AppointmentForm(instance = u_appointment) 
+        return render(request, 'appointment/appointment-form.html', {'form':form})  
+    elif request.method == 'POST':
+        form = AppointmentForm(request.POST, instance= u_appointment)
+        if form.is_valid(): 
+            form.save()
+            return redirect (reverse('appointment_list'))
 
 
