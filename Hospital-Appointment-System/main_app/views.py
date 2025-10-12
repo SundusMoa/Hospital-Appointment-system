@@ -60,6 +60,13 @@ def doctor_create(request):
             return redirect (reverse('doctor_list')) # reverse take name in path
         else :
             return render (request,'doctor/doctor-form.html',{'form': form})
+        
+
+def doctor_delete(request,pk):
+    u_delete = Doctor.objects.get(pk = pk) 
+    if request.method == 'POST':
+        u_delete.delete()
+        return redirect (reverse('doctor_list'))
 
 
 
