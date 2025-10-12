@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rateel-Clincs </title>
+</head>
+<body>
+    <a href="{% url 'appointment_create' %}"> | Book Appointment</a>
+    <a href="{% url 'appointment_list' %}"> | Appointments </a>
+    {% block content %}
+    {% endblock  %}
+</body>
+</html>
