@@ -22,7 +22,7 @@ def appointment_create(request):
         form=AppointmentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect (reverse('appointment_create')) # reverse take name in path
+            return redirect (reverse('appointment_list')) # reverse take name in path
         else :
             return render (request,'appointment/appointment-form.html',{'form': form})
 
@@ -36,5 +36,14 @@ def appointment_update(request,pk):
         if form.is_valid(): 
             form.save()
             return redirect (reverse('appointment_list'))
+
+def appointment_delete(request,pk):
+    u_appointment = Appointments.objects.get(pk = pk) 
+    if request.method == 'POST':
+        u_appointment.delete()
+        return redirect (reverse('appointment_list'))
+
+
+
 
 

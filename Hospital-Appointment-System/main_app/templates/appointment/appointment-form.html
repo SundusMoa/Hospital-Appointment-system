@@ -2,7 +2,7 @@
 
 {% block content %}
 <h4>Create a new appointment :</h4>
- <!-- delete the action from form -->
+<!-- delete the action from form so the data will send the same url what ever  -->
 <form  method = "post">
     {% csrf_token %}
     {{form.as_p}}
