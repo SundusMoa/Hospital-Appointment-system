@@ -13,4 +13,6 @@ urlpatterns = [ #routing my page ;)
     path('doctor/create', views.doctor_create , name='doctor_create'),
     path('doctor/<int:pk>/delete', views.doctor_delete, name='doctor_delete'),
 
+    path('auth/signup/' , views.SignUpView.as_view(), name = 'signup'),
+
 ]

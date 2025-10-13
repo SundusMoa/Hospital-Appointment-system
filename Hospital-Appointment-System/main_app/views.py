@@ -68,6 +68,16 @@ def doctor_delete(request,pk):
         u_delete.delete()
         return redirect (reverse('doctor_list'))
 
+from django.contrib.auth.forms import UserCreationForm # form to create anew user
+from django.contrib.auth.models import User # this is  a built in user models
+from django.views.generic import CreateView
+
+# to create a user in my database
+class SignUpView(CreateView):
+    model = User
+    template_name = "registration/signup.html"
+    form_class = UserCreationForm
+    success_url = '/auth/login'  # or your home
 
 
     
