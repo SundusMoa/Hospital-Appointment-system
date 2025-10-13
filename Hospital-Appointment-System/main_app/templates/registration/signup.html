@@ -1,7 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Rateel Hospital | Sign-up</title>
+<link rel="stylesheet" href="{% static "css/signup.css" %}">
+{% endblock  %}
 
 {% block content %}
-
   <h1>SignUp</h1>
   <form method="post">
     {% csrf_token %}
