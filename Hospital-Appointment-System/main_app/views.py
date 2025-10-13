@@ -2,6 +2,7 @@ from django.shortcuts import render , redirect
 from .models import Appointments , Doctor
 from .forms import AppointmentForm , DoctorForm
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def homepage (request):
@@ -11,7 +12,12 @@ def appointment_list (request):
     all_appointment = Appointments.objects.all()
     return render (request , 'appointment/appointment_list.html', {'appointments': all_appointment})
     
+def myappointment_list(request):
+    u_appointment = Appointments.objects.filter(patient=request.user)
+    return render (request , 'appointment/myappointment_list.html', {'appointments': u_appointment})
 
+
+@login_required 
 def appointment_create(request):
     
     if request.method == 'GET':
@@ -43,9 +49,12 @@ def appointment_delete(request,pk):
         u_appointment.delete()
         return redirect (reverse('appointment_list'))
 
+
 def doctor_list (request):
     all_doctor = Doctor.objects.all()
     return render (request , 'doctor/doctor_list.html', {'doctors':all_doctor})
+
+
 
 def doctor_create(request):
     
@@ -67,6 +76,8 @@ def doctor_delete(request,pk):
     if request.method == 'POST':
         u_delete.delete()
         return redirect (reverse('doctor_list'))
+
+
 
 from django.contrib.auth.forms import UserCreationForm # form to create anew user
 from django.contrib.auth.models import User # this is  a built in user models

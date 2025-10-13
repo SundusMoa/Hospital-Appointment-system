@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>My Appointments :</h3>
+
+{% if appointments %}
+  <ul>
+  {% for appointment in appointments %}
+    <li>
+      Patient: {{ appointment.patient.username }} |
+      Date: {{ appointment.date }} |
+      Time: {{ appointment.time }}
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No appointments found.</p>
+{% endif %}
+{% endblock %}

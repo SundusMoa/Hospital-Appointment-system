@@ -2,7 +2,9 @@
 
 {% block content %}
 <h3>Discover Our Specialist Doctor </h3>
-<a href="{% url 'doctor_create' %}"> | Create Doctor Profile </a>
+{% if user.is_authenticated %}
+<a href="{% url 'doctor_create' %}"> | ADD NEW DOCTOR </a>
+{% endif %}
 <ul>
 {% for doctor in doctors %}
 <div>
