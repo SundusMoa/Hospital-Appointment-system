@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8fbff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+#home-container {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #e6f2ff;
+}
+
+#home-container h1 {
+    color: #004aad;
+    font-size: 2.5em;
+}
+
+#home-container p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+#about {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#about h2 {
+    color: #007bff;
+}
+
+#about p {
+    width: 70%;
+    margin: auto;
+    line-height: 1.6;
+}

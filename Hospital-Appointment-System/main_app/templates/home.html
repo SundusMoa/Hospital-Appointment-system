@@ -1,8 +1,22 @@
 {% extends "base.html" %}
-    {% block head %}
-    
-    {% endblock  %}
+{% load static %}
 
-    {% block content %}
-    <h1>Welcome , you can booking your appointment here</h1>
-    {% endblock  %}
+{% block head %}
+    <title>Rateel Hospital | Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="home-container">
+        <h1>Welcome to Rateel Hospital</h1>
+        <p>Your health is our priority. You can book your appointment easily here.</p>
+    </div>
+
+    <div id="about">
+        <h2>About Us</h2>
+        <p>
+            Rateel Hospital provides high-quality healthcare with professional doctors
+            and easy online appointment booking. We are here to make your medical experience smoother.
+        </p>
+    </div>
+{% endblock %}

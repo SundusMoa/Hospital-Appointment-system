@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rateel-Hospital </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
     {% block head %}{% endblock  %}
 </head>
 <body>
-    
+
+<nav>
     <a href="{% url 'homepage' %}"> | Home </a>
     <a href="{% url 'doctor_list' %}"> | Doctors </a>
 
@@ -25,9 +27,16 @@
     <a href="{% url 'signup' %}"> | SignUp </a>
     {% endif %}
 
+</nav>
+
     {% block content %}
     {% endblock  %}
 
-    {% block footer %}{% endblock  %}
+
+    {% block footer %}
+    
+    {% endblock %}
+
+    
 </body>
 </html>

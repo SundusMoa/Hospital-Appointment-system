@@ -99,7 +99,11 @@ class SignUpView(CreateView):
     success_url = '/auth/login'  # or your home
 
 
-    
+def is_doctor(user):
+    return Doctor.objects.filter(doctor_name=user.username).exists()
+
+def some_view(request):
+    return render(request, 'base.html', {'is_doctor': is_doctor(request.user)})
 
 
 
