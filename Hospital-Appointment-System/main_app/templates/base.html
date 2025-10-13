@@ -10,8 +10,12 @@
     <a href="{% url 'appointment_create' %}"> | Book Appointment</a>
     <a href="{% url 'appointment_list' %}"> | Appointments </a>
     <a href="{% url 'doctor_list' %}"> | Doctors </a>
-    <a href="{% url 'login' %}"> | login </a>
+    <a href="{% url 'login' %}"> | Login </a>
     <a href="{% url 'signup' %}"> | SignUp </a>
+    <form method='post' action="{% url 'logout'%}" id='logout-form'>
+        {% csrf_token %}
+        <button>Logout</button>
+    </form>
     {% block content %}
     {% endblock  %}
 </body>
