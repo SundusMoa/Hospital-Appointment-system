@@ -6,10 +6,11 @@
     <title>Rateel-Clincs </title>
 </head>
 <body>
+    <a href="{% url 'homepage' %}"> | Home </a>
     <a href="{% url 'appointment_create' %}"> | Book Appointment</a>
     <a href="{% url 'appointment_list' %}"> | Appointments </a>
     <a href="{% url 'doctor_list' %}"> | Doctors </a>
-    <a href="{% url 'doctor_create' %}"> | Create Doctor Profile </a>
+    <a href="{% url 'login' %}"> | login </a>
     {% block content %}
     {% endblock  %}
 </body>
