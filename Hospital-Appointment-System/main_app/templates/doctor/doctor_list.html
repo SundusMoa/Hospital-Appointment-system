@@ -2,22 +2,18 @@
 
 {% block content %}
 <h3>Discover Our Specialist Doctor </h3>
-{% if user.is_authenticated %}
-<a href="{% url 'doctor_create' %}"> | ADD NEW DOCTOR </a>
-{% endif %}
 <ul>
 {% for doctor in doctors %}
 <div>
-
 <li><strong>{{ doctor.doctor_name }}</strong> : {{doctor.doctor_specialization }}</li>
-
 <form action="/doctor/{{doctor.id}}/delete" method='post'>
        {% csrf_token %}
        <button>Delete</button>
 </form>
-
 </div>
-
 {% endfor %}
 </ul>
+{% if user.is_authenticated %}
+<a href="{% url 'doctor_create' %}"> | ADD NEW DOCTOR </a>
+{% endif %}
 {% endblock  %}

@@ -78,6 +78,14 @@ def doctor_delete(request,pk):
         return redirect (reverse('doctor_list'))
 
 
+def doctor_appointments(request):
+
+    doctor = Doctor.objects.filter(doctor_name=request.user.username).first()
+    if doctor:
+        appointments = Appointments.objects.filter(doctor=doctor)
+    else:
+        appointments = []
+    return render(request, 'appointment/doctor_appointments.html', {'appointments': appointments})
 
 from django.contrib.auth.forms import UserCreationForm # form to create anew user
 from django.contrib.auth.models import User # this is  a built in user models

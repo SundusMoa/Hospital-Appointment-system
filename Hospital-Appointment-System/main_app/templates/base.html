@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rateel-Hospital </title>
+    {% block head %}{% endblock  %}
 </head>
 <body>
+    
     <a href="{% url 'homepage' %}"> | Home </a>
     <a href="{% url 'doctor_list' %}"> | Doctors </a>
 
     {% if user.is_authenticated %}
         <a href="{% url 'appointment_create' %}"> | Book Appointment</a>
         <a href="{% url 'appointment_list' %}"> | Appointments </a>
-        <a href="{% url 'myappointment_list' %}"> | MyAppointments </a>
+        <a href="{% url 'myappointment_list' %}"> | Patient Appointments </a>
+        <a href="{% url 'doctor_appointments' %}"> | Doctor Appointments </a>
         <form method='post' action="{% url 'logout'%}" id='logout-form'>
             {% csrf_token %}
             <button>Logout</button>
         </form>
-
     {% else %}
     <a href="{% url 'login' %}"> | Login </a>
     <a href="{% url 'signup' %}"> | SignUp </a>
@@ -25,5 +27,7 @@
 
     {% block content %}
     {% endblock  %}
+
+    {% block footer %}{% endblock  %}
 </body>
 </html>

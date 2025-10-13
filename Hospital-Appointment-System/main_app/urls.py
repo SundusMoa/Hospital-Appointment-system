@@ -16,7 +16,7 @@ urlpatterns = [ #routing my page ;)
 
     path('auth/signup/' , views.SignUpView.as_view(), name = 'signup'),
 
-   
+    path('doctor/appointments/', views.doctor_appointments, name='doctor_appointments'),
 
 
 ]
