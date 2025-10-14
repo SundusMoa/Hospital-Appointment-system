@@ -1,16 +1,18 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block head %}
-
+<title>Doctor List</title>
+<link rel="stylesheet" href="{% static "css/appointment.css" %}">
 {% endblock  %}
 
 {% block content %}
+
 <h3>Discover Our Specialist Doctor </h3>
 <ul>
 {% for doctor in doctors %}
-<div>
-<li><strong>{{ doctor.doctor_name }}</strong> : {{doctor.doctor_specialization }}</li>
+<div class="appointment-card">
+<li><strong>{{ doctor.doctor_name }}</strong>{{doctor.doctor_specialization }}</li>
 <form action="/doctor/{{doctor.id}}/delete" method='post'>
        {% csrf_token %}
        <button>Delete</button>
@@ -21,4 +23,5 @@
 {% if user.is_authenticated %}
 <a href="{% url 'doctor_create' %}"> | ADD NEW DOCTOR </a>
 {% endif %}
+
 {% endblock  %}

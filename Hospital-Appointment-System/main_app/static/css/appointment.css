@@ -16,7 +16,6 @@ h3 {
 }
 
 
-
 .appointment-card {
     background-color: #ffffff;
     border: 1px solid #ccc;
@@ -61,6 +60,8 @@ a {
     padding: 8px 15px;
     display: inline-block;
     font-weight: bold;
+  
+    
 }
 
 a:hover {
@@ -109,9 +110,5 @@ li:hover {
 }
 
 
-p {
-  text-align: center;
-  color: #888;
-  margin-top: 40px;
-  font-size: 1.1rem;
-}
+
+
