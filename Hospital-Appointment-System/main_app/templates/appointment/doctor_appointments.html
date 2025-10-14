@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Doctor Appointments</title>
+<link rel="stylesheet" href="{% static "css/appointment.css" %}">
+{% endblock  %}
 
 {% block content %}
 <h3>My Appointments :</h3>

@@ -3,14 +3,19 @@ from .models import Appointments , Doctor
 from .forms import AppointmentForm , DoctorForm
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def homepage (request):
     return render (request , 'home.html')
 
-def appointment_list (request):
-    all_appointment = Appointments.objects.all()
-    return render (request , 'appointment/appointment_list.html', {'appointments': all_appointment})
+@login_required
+def appointment_list(request):
+    if not is_doctor(request.user):
+        # You can either redirect or show a "403 Forbidden" message
+        return redirect('myappointment_list') 
+    appointments = Appointments.objects.all()
+    return render(request, "appointment/appointment_list.html", {"appointments": appointments})
     
 def myappointment_list(request):
     u_appointment = Appointments.objects.filter(patient=request.user)
@@ -57,7 +62,8 @@ def doctor_list (request):
 
 
 def doctor_create(request):
-    
+    if not is_doctor(request.user):
+        return redirect('homepage') 
     if request.method == 'GET':
         form = DoctorForm()
         return render (request,'doctor/doctor-form.html',{'form': form})
