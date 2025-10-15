@@ -73,16 +73,6 @@ WSGI_APPLICATION = 'appointment_sys_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Hospital_db',  # Name of your PostgreSQL database
-        'USER': 'postgres',
-        'PASSWORD':'sa123456789',
-        'HOST': 'localhost',  
-        'PORT': '5432',
-    }
-}
 
 
 # Password validation
@@ -146,10 +136,10 @@ else:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),  # same name as your .env file
+        'NAME': 'Hospital_db',  # Name of your PostgreSQL database
         'USER': 'postgres',
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': 'localhost',
+        'PASSWORD':'sa123456789',
+        'HOST': 'localhost',  
         'PORT': '5432',
     }
 }
@@ -165,3 +155,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "homepage"       # after successful login
 LOGOUT_REDIRECT_URL = "login"     # after logout
+
