@@ -19,23 +19,23 @@ def appointment_list(request):
     
 def myappointment_list(request):
     u_appointment = Appointments.objects.filter(patient=request.user)
-    return render (request , 'appointment/myappointment_list.html', {'appointments': u_appointment})
+    return render (request , 'appointment/appointment_list.html', {'appointments': u_appointment})
 
-
-@login_required 
+@login_required
 def appointment_create(request):
-    
     if request.method == 'GET':
-        form = AppointmentForm()
-        return render (request,'appointment/appointment-form.html',{'form': form})
+        form = AppointmentForm(user=request.user)
+        return render(request, 'appointment/appointment-form.html', {'form': form})
 
     elif request.method == 'POST':
-        form=AppointmentForm(request.POST)
+        form = AppointmentForm(request.POST, user=request.user)
         if form.is_valid():
-            form.save()
-            return redirect (reverse('appointment_list')) # reverse take name in path
-        else :
-            return render (request,'appointment/appointment-form.html',{'form': form})
+            appointment = form.save(commit=False)
+            appointment.patient = request.user 
+            appointment.save()
+            return redirect(reverse('myappointment_list'))
+        return render(request, 'appointment/appointment-form.html', {'form': form})
+
 
 def appointment_update(request,pk):
     u_appointment = Appointments.objects.get(pk = pk) 
@@ -105,6 +105,7 @@ class SignUpView(CreateView):
     success_url = '/auth/login'  # or your home
 
 
+# view to render the appointments for only doctor by 
 def is_doctor(user):
     return Doctor.objects.filter(doctor_name=user.username).exists()
 
